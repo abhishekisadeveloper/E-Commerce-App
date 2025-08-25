@@ -1,0 +1,5 @@
+=> centralize the api inside the .env file. ✅
+=> make a services for api call, api.js inside the services folder. ✅
+    - centralize the code and call and make it usable for all components.
+    - make a fn() using async awite and pass the parameter inside the function. and use it as an endpoint of the url.
+    -

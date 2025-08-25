@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer components {
+    .ShoppingCardContainer {
+        @apply flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-1 border-[#d3d3d3]   
+    }
+    .AddToCartButton {
+        @apply flex cursor-pointer w-full justify-center gap-2 items-center font-semibold px-6 py-2 bg-[#d9d9d9] text-[#333333] rounded-[0.2rem] hover:bg-[#cecece] transition-colors duration-300
+    }
+}
