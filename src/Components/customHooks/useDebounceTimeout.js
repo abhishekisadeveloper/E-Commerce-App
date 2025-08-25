@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
 const useDebounceTimeout = (search, delay = 500) => {
-  const [debounceTimeout, setDebounceTimeout] = useState(search);
-  // console.log("Search here", debounceTimeout);
+  const [debouncedValue, setDebouncedValue] = useState(search);
+  // console.log("Search here", debouncedValue);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setDebounceTimeout(search);
+      setDebouncedValue(search);
     }, delay);
 
     return () => clearTimeout(timeout);
   }, [search, delay]);
-  return debounceTimeout
+  return debouncedValue
 };
 
 export default useDebounceTimeout;

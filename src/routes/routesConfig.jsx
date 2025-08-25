@@ -3,7 +3,6 @@
 import Home from "../Pages/Home/Home";
 import Men from "../Pages/MenShoppingPage/Men";
 import Women from "../Pages/WomenShoppingPage/Women";
-import Unisex from "../Pages/UnisexShoppingPage/Unisex";
 
 export const routesConfig = [
   {
@@ -20,10 +19,5 @@ export const routesConfig = [
     path: "/women",
     element: <Women />,
     pathName: "Women",
-  },
-  {
-    path: "/unisex",
-    element: <Unisex />,
-    pathName: "Unisex",
   }
 ];
