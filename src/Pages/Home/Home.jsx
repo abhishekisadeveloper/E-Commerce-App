@@ -5,8 +5,8 @@ import useGetApiData from "../../Components/customHooks/useGetApiData";
 import { useState } from "react";
 
 const Home = () => {
-  const [inputValue, setInputValue] = useState("phone");
-  const { products, loading, error } = useGetApiData(inputValue);
+  const [inputValue, setInputValue] = useState("");
+  const { products, loading, error } = useGetApiData({searchTerm: inputValue});
 
 
   return (
