@@ -4,6 +4,7 @@ import { BiSolidUser } from "react-icons/bi";
 import { GrFavorite } from "react-icons/gr";
 import { routesConfig } from "../../routes/routesConfig";
 import { Link, NavLink } from "react-router";
+const pathNames = ["Home", "Mens", "Womens"];
 
 const Navbar = () => {
   return (
@@ -17,15 +18,15 @@ const Navbar = () => {
           />
         </Link>
         <ul className="flex gap-6 text-[1.2rem] font-[500]">
-          {routesConfig.map(({ pathName, path }, index) => (
+          {pathNames.map((path, index) => (
             <li className="hover:underline" key={index}>
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "underline text-red-950" : ""
                 }
-                to={path}
+                to={path === "Home" ? "/" : `/${path.toLowerCase()}`}
               >
-                {pathName}
+                {path}
               </NavLink>
             </li>
           ))}

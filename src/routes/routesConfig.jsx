@@ -3,21 +3,23 @@
 import Home from "../Pages/Home/Home";
 import Men from "../Pages/MenShoppingPage/Men";
 import Women from "../Pages/WomenShoppingPage/Women";
+import ProductDetails from "../Components/ProductDetails";
 
 export const routesConfig = [
   {
     path: "/",
     element: <Home />,
-    pathName: "Home",
   },
   {
-    path: "/men",
+    path: "/mens",
     element: <Men />,
-    pathName: "Men",
   },
   {
-    path: "/women",
+    path: "/womens",
     element: <Women />,
-    pathName: "Women",
+  },
+  {
+    path: "/product/:id",
+    element: <ProductDetails />
   }
 ];
