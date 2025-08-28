@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useDebounceTimeout from "./useDebounceTimeout";
 
-const useGetApiData = ({ searchTerm = '', category = '' }) => {
+const useGetApiData = ({ searchTerm = "", category = "" }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,21 +9,26 @@ const useGetApiData = ({ searchTerm = '', category = '' }) => {
   const debounceTimeout = useDebounceTimeout(searchTerm, 500);
 
   useEffect(() => {
+    if (!debounceTimeout && !category) {
+      setProducts([]);
+      setLoading(false);
+      return;
+    }
+
     const shoppingData = async () => {
       try {
         setLoading(true);
-
         let url;
 
         if (debounceTimeout) {
-          url = `${BASE_URL}/products/search?q=${debounceTimeout}&limit=12`;
+          url = `${BASE_URL}/products/search?q=${debounceTimeout}`;
         } else if (category) {
           url = `${BASE_URL}/products/category/${category}`;
         } else {
-          url = `${BASE_URL}/products/search?q=${debounceTimeout || searchTerm}&limit=12`;
+          url = `${BASE_URL}/products/search?q=all&limit=12`;
         }
-
-
+        console.log(category);
+        
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -40,7 +45,7 @@ const useGetApiData = ({ searchTerm = '', category = '' }) => {
     };
 
     shoppingData();
-  }, [debounceTimeout, category]);
+  }, [debounceTimeout, category, BASE_URL]);
 
   return { products, loading, error };
 };

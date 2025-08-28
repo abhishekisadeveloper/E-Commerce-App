@@ -6,8 +6,10 @@ import { useState } from "react";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
-  const { products, loading, error } = useGetApiData({searchTerm: inputValue});
-
+  const { products, loading, error } = useGetApiData({
+      searchTerm: inputValue,
+    category: "mens-shirts",
+  });
 
   return (
     <>
@@ -74,13 +76,14 @@ const Home = () => {
           ) : error ? (
             <div className="text-red-500 text-center py-4">{error}</div>
           ) : products.length === 0 ? (
-            <div className="text-center text-2xl py-4">Sorry, there are no products found.</div>
+            <div className="text-center text-2xl py-4">
+              Sorry, there are no products found.
+            </div>
           ) : (
             <div className="flex flex-wrap justify-center gap-12 py-6">
-              {Array.isArray(products) &&
-                products.map((product) => (
-                  <ShoppingCard key={product.id} productData={product} />
-                ))}
+              {products.map((product) => (
+                <ShoppingCard key={product.id} productData={product} />
+              ))}
             </div>
           )}
         </div>

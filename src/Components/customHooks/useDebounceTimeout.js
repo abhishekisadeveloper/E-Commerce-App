@@ -6,7 +6,13 @@ const useDebounceTimeout = (search, delay = 500) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setDebouncedValue(search);
+      // Clean the search term by removing special characters and trimming whitespace
+      const trimmedSearch = search.replace(/[{}=+-_.,><?/':;!@#$%^&*()~`]/g, '');
+      const finalSearchTerm = trimmedSearch.trim()
+      
+      if (finalSearchTerm) {
+        setDebouncedValue(finalSearchTerm);
+      }
     }, delay);
 
     return () => clearTimeout(timeout);
