@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import useGetApiData from "./customHooks/useGetApiData";
+
 const SearchLists = ({ inputValue, setInputValue }) => {
   const { products, error, loading } = useGetApiData({
     searchTerm: inputValue,
@@ -21,7 +22,7 @@ const SearchLists = ({ inputValue, setInputValue }) => {
         ) : (
           products.map((product) => {
             return (
-              <NavLink>
+              <NavLink to={`/product/${product.id}`}>
                 <div className="flex gap-4 hover:bg-[#D9D9D9] rounded-[0.5rem] items-center mt-2">
                   <img
                     className="w-20"
