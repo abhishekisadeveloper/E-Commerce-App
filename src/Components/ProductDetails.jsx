@@ -24,11 +24,11 @@ const ProductDetails = () => {
   return (
     <>
       <div className="max-w-[120rem] m-auto">
-        <div className="mx-10 flex">
-          <div className="">
-            <img src={productInfo?.thumbnail} alt={productInfo?.title} />
+        <div className="mx-10 flex items-center">
+          <div className="w-[50%] mt-24 flex ">
+            <img className="w-[100%]" src={productInfo?.thumbnail} alt={productInfo?.title} />
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 w-[60%] ">
             <h1 className="text-[3rem] font-bold text-[#333333] mt-4">
               {productInfo?.title}
             </h1>
